@@ -2,6 +2,7 @@
 
 import os
 import argparse
+from pathlib import Path
 
 
 def strtobool(val):
@@ -20,6 +21,24 @@ def strtobool(val):
         raise ValueError(f"invalid truth value {val!r}")
 
 
+def get_default_config_dir():
+    """Get the default configuration directory.
+    
+    For development installations, uses <repo>/data.
+    For pip/pipx installations, uses ~/.bazarr.
+    """
+    # Try development path first (relative to this file's parent/parent/data)
+    dev_config_dir = os.path.realpath(os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'data'))
+    if os.path.isdir(dev_config_dir) and os.path.exists(os.path.join(dev_config_dir, '..')):
+        # Check if this looks like a development environment (data dir is a sibling to bazarr package)
+        parent = os.path.dirname(dev_config_dir)
+        if os.path.exists(os.path.join(parent, 'bazarr.py')):
+            return dev_config_dir
+    
+    # Fall back to user home directory for installed packages
+    return os.path.expanduser('~/.bazarr')
+
+
 no_update = os.environ.get("NO_UPDATE", "false").strip() == "true"
 no_cli = os.environ.get("NO_CLI", "false").strip() == "true"
 
@@ -27,7 +46,7 @@ parser = argparse.ArgumentParser()
 
 parser.register('type', bool, strtobool)
 
-config_dir = os.path.realpath(os.path.join(os.path.dirname(os.path.dirname(__file__)), '..', 'data'))
+config_dir = get_default_config_dir()
 parser.add_argument('-c', '--config', default=config_dir, type=str, metavar="DIR",
                     dest="config_dir", help="Directory containing the configuration (default: %s)" % config_dir)
 parser.add_argument('-p', '--port', type=int, metavar="PORT", dest="port",
