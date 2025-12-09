@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+include requirements.txt
+recursive-include migrations *
+recursive-include custom_libs *
+recursive-include libs *
+recursive-include bazarr *

@@ -1,0 +1,204 @@
+Metadata-Version: 2.4
+Name: bazarr
+Version: 1.4.3
+Summary: Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements.
+Author-email: morpheus65535 <morpheus65535@gmail.com>
+License: GPL-3.0
+Project-URL: Homepage, https://github.com/morpheus65535/bazarr
+Project-URL: Documentation, https://wiki.bazarr.media
+Project-URL: Repository, https://github.com/morpheus65535/bazarr.git
+Project-URL: Issues, https://github.com/morpheus65535/bazarr/issues
+Project-URL: Discord, https://discord.gg/MH2e2eb
+Keywords: subtitles,sonarr,radarr,tv-shows,movies
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Flask
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Multimedia :: Video
+Classifier: Topic :: Internet :: WWW/HTTP :: Servers
+Requires-Python: <3.13,>=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: alembic==1.14.0
+Requires-Dist: aniso8601==10.0.0
+Requires-Dist: apprise==1.9.2
+Requires-Dist: apscheduler<=3.10.4
+Requires-Dist: attrs==24.3.0
+Requires-Dist: blinker==1.9.0
+Requires-Dist: charset-normalizer==3.4.1
+Requires-Dist: deep-translator==1.11.4
+Requires-Dist: dogpile.cache==1.3.3
+Requires-Dist: dynaconf==3.2.6
+Requires-Dist: fese==0.3.0
+Requires-Dist: ffsubsync==0.4.27
+Requires-Dist: flask-cors==5.0.0
+Requires-Dist: flask-migrate==4.1.0
+Requires-Dist: flask-restx==1.3.0
+Requires-Dist: Flask-SocketIO==5.5.1
+Requires-Dist: flask_sqlalchemy==3.1.1
+Requires-Dist: Flask==3.1.0
+Requires-Dist: ga4mp==2.0.4
+Requires-Dist: guess_language-spirit==0.5.3
+Requires-Dist: guessit==3.8.0
+Requires-Dist: h11==0.14.0
+Requires-Dist: inflect==7.5.0
+Requires-Dist: jsonschema<=4.17.3
+Requires-Dist: knowit<=0.5.3
+Requires-Dist: lxml>=4.3.0
+Requires-Dist: Mako==1.3.8
+Requires-Dist: numpy>=1.12.0
+Requires-Dist: Pillow>=9.0.0
+Requires-Dist: plexapi>=4.16.1
+Requires-Dist: pycountry==24.6.1
+Requires-Dist: pyrsistent==0.20.0
+Requires-Dist: pysubs2==1.7.3
+Requires-Dist: python-engineio==4.11.2
+Requires-Dist: python-socketio==5.12.1
+Requires-Dist: pytz==2024.2
+Requires-Dist: pytz_deprecation_shim==0.1.0.post0
+Requires-Dist: rarfile==4.2
+Requires-Dist: referencing<=0.23.0
+Requires-Dist: requests==2.32.3
+Requires-Dist: semver==3.0.3
+Requires-Dist: signalrcore==0.9.5
+Requires-Dist: simple-websocket==1.1.0
+Requires-Dist: sqlalchemy==2.0.37
+Requires-Dist: textdistance==4.6.3
+Requires-Dist: unidecode==1.3.8
+Requires-Dist: waitress==3.0.2
+Requires-Dist: webrtcvad-wheels>=2.0.10
+Requires-Dist: whichcraft==0.6.1
+Requires-Dist: wsproto==1.2.0
+Requires-Dist: pywin32; platform_system == "Windows"
+Provides-Extra: postgres
+Requires-Dist: psycopg2-binary>=2.9.0; extra == "postgres"
+Provides-Extra: dev
+Requires-Dist: sympy; extra == "dev"
+Requires-Dist: vcrpy>=1.6.1; extra == "dev"
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: pytest-pep8; extra == "dev"
+Requires-Dist: pytest-flakes; extra == "dev"
+Requires-Dist: pytest-cov; extra == "dev"
+Requires-Dist: pytest-vcr; extra == "dev"
+Requires-Dist: pytest-mock; extra == "dev"
+Requires-Dist: requests-mock; extra == "dev"
+Dynamic: license-file
+
+# bazarr
+
+Bazarr is a companion application to Sonarr and Radarr. It manages and downloads subtitles based on your requirements. You define your preferences by TV show or movie and Bazarr takes care of everything for you.
+
+Be aware that Bazarr doesn't scan disk to detect series and movies: It only takes care of the series and movies that are indexed in Sonarr and Radarr.
+
+Thanks to the folks at OpenSubtitles for their logo that was an inspiration for ours.
+
+## Support on Paypal
+
+At the request of some, here is a way to demonstrate your appreciation for the efforts made in the development of Bazarr:
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XHHRWXT9YB7WE&source=url)
+
+# Status
+
+[![GitHub issues](https://img.shields.io/github/issues/morpheus65535/bazarr.svg?style=flat-square)](https://github.com/morpheus65535/bazarr/issues)
+[![GitHub stars](https://img.shields.io/github/stars/morpheus65535/bazarr.svg?style=flat-square)](https://github.com/morpheus65535/bazarr/stargazers)
+[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/bazarr.svg?style=flat-square)](https://hub.docker.com/r/linuxserver/bazarr/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/hotio/bazarr.svg?style=flat-square)](https://hub.docker.com/r/hotio/bazarr/)
+[![Discord](https://img.shields.io/badge/discord-chat-MH2e2eb.svg?style=flat-square)](https://discord.gg/MH2e2eb)
+
+# Support
+
+For installation and configuration instructions, see [wiki](https://wiki.bazarr.media).
+
+You can reach us for support on [Discord](https://discord.gg/MH2e2eb).
+
+If you find a bug, please open an issue on [Github](https://github.com/morpheus65535/bazarr/issues).
+
+# Feature Requests
+
+If you need something that is not already part of Bazarr, feel free to create a feature request on [Feature Upvote](http://features.bazarr.media).
+
+## Major Features Include:
+
+- Support for major platforms: Windows, Linux, macOS, Raspberry Pi, etc.
+- Automatically add new series and episodes from Sonarr
+- Automatically add new movies from Radarr
+- Series or movies based configuration for subtitles languages
+- Scan your existing library for internal and external subtitles and download any missing
+- Keep history of what was downloaded from where and when
+- Manual search so you can download subtitles on demand
+- Upgrade subtitles previously downloaded when a better one is found
+- Ability to delete external subtitles from disk
+- Currently support 184 subtitles languages with support for forced/foreign subtitles (depending of providers)
+- And a beautiful UI based on Sonarr
+
+## Supported subtitles providers:
+
+- Addic7ed
+- AnimeKalesi
+- Animetosho (requires AniDb HTTP API client described [here](https://wiki.anidb.net/HTTP_API_Definition))
+- Assrt
+- AvistaZ, CinemaZ (Get session cookies using method described [here](https://github.com/morpheus65535/bazarr/pull/2375#issuecomment-2057010996))
+- BetaSeries
+- BSplayer
+- Embedded Subtitles
+- Gestdown.info
+- GreekSubs
+- GreekSubtitles
+- HDBits.org
+- Hosszupuska
+- Karagarga.in
+- Ktuvit (Get `hashed_password` using method described [here](https://github.com/XBMCil/service.subtitles.ktuvit))
+- LegendasDivx
+- Legendas.net
+- Napiprojekt
+- Napisy24
+- Nekur
+- OpenSubtitles.com
+- OpenSubtitles.org (VIP users only)
+- Podnapisi
+- RegieLive
+- Sous-Titres.eu
+- Subdivx
+- subf2m.co
+- Subs.sab.bz
+- Subs4Free
+- Subs4Series
+- Subscene
+- Subscenter
+- SubsRo
+- Subsunacs.net
+- SubSynchro
+- Subtitrari-noi.ro
+- subtitri.id.lv
+- Subtitulamos.tv
+- Supersubtitles
+- Titlovi
+- Titrari.ro
+- Titulky.com
+- Turkcealtyazi.org
+- TuSubtitulo
+- TVSubtitles
+- Whisper (requires [ahmetoner/whisper-asr-webservice](https://github.com/ahmetoner/whisper-asr-webservice))
+- Wizdom
+- XSubs
+- Yavka.net
+- YIFY Subtitles
+- Zimuku
+
+## Screenshot
+
+![Bazarr](/screenshot/bazarr-screenshot.png?raw=true "Bazarr")
+
+### License
+
+- [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
+- Copyright 2010-2024

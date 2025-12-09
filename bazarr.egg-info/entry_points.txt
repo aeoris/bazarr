@@ -1,0 +1,2 @@
+[console_scripts]
+bazarr = bazarr.cli:main

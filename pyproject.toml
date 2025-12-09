@@ -118,16 +118,17 @@ Discord = "https://discord.gg/MH2e2eb"
 bazarr = "bazarr.cli:main"
 
 [tool.setuptools]
-packages = ["bazarr", "custom_libs", "libs"]
 include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bazarr*"]
 
 [tool.setuptools.package-data]
 bazarr = ["**/*"]
-custom_libs = ["**/*"]
-libs = ["**/*"]
 
 [tool.setuptools.data-files]
-migrations = ["migrations/"]
+"share/bazarr" = ["migrations/*", "libs/*", "custom_libs/*"]
 
 [tool.black]
 line-length = 120
